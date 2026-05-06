@@ -1,0 +1,4 @@
+pdfplumber
+json5
+ollama
+phi3:mini model
