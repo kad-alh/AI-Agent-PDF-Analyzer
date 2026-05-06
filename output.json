@@ -1,32 +1,42 @@
 {
-    "AgreementDate": "Janu01_2024",
+    "AgreementType": "Residential Rental Agreement",
+    "DateMade": "Janu01,2024",
     "LandlordName": "Sarah Thompson",
     "LandlordAddress": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
     "TenantName": "Mohammed Baher",
     "TenantAddress": "14 Creek View Residences, Business Bay, Dubai, UAE",
     "PropertyLocation": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-    "LeaseStartDate": "February_2024",
-    "LeaseEndDate": "January_31_2025",
-    "TermLengthMonths": "12",
-    "RentPerMonthAED": "6500",
-    "PaymentDueDay": "1st of each month",
-    "PaymentMethod": [
+    "LeaseStartDate": "Feburary 1,2024",
+    "LeaseEndDate": "Januaray 31,2025",
+    "TermOfLease": "Fixed - 12 months",
+    "RentAmount": "AED 6,500",
+    "PaymentDueByDay": 1,
+    "PaymentMethodOptions": [
         "Bank transfer",
         "Post-dated cheques"
     ],
-    "SecurityDepositAmountAED": "6500",
-    "UtilitiesResponsibleByTenant": [
+    "SecurityDepositAmount": "AED 6,500",
+    "RefundableWithinDaysAfterLeaseEnds": 30,
+    "TenantUtilitiesResponsibilities": [
         "DEWA (electricity & water)",
         "Internet",
         "Gas (if applicable)"
     ],
-    "BuildingServiceChargesLandlord": true,
-    "MaintenanceOfMajorSystemsLandlord": true,
-    "MinorRepairsHandledByTenantUnderAED_200": false,
-    "LateFeePerDayAED": "150",
-    "PropertyUseOnlyResidentialWithoutSubletting": true,
-    "ReportDamagesPromptlyLandlordToKnow": true,
-    "EarlyTermination60DaysNoticeWritten": true,
-    "TenantRemainsResponsibleForRentDuringNoticePeriod": true,
-    "EntryByLandlord24HoursNoticeExceptEmergency": true
+    "LandlordUtilitiesResponsibilities": [
+        "Building service charges",
+        "Maintenance of major systems (AC, plumbing, electrical)"
+    ],
+    "LateFeePerDayAfterDueDate": "AED 150",
+    "PropertyUseRestriction": "No subletting without written permission. Residential use only.",
+    "TenantRepairResponsibilitiesUnder200AED": true,
+    "MajorRepairsLandlordHandle": true,
+    "EarlyTerminationNoticePeriodDays": 60,
+    "EntryByLandlordWithoutNoticeNeededForReasons": [
+        "Inspections",
+        "Repairs"
+    ],
+    "DocumentSignatures": {
+        "Sarah Thompson": "",
+        "Mohammed Baher": ""
+    }
 }

@@ -24,6 +24,7 @@ Do NOT invent, guess, assume, or add fields.
 - Do NOT include fields that are not present in the document. 
 5. If the document does not contain a piece of information, OMIT that field entirely. 
 Your entire output MUST be one valid JSON object and nothing else.
+DO NOT LEAVE OUT ANY INFORMATION THAT IS PRESENT IN THE DOCUMENT AND KEEP IT CONSISTENT WITH THE DOCUMENT.
   
 
 """
