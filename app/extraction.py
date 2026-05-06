@@ -12,19 +12,17 @@ with pdfplumber.open("sample_agreements/agreement.pdf") as pdf: #Using pdfplumbe
     split_text = full_pdf.split()
     full_pdf = " ".join(full_pdf.split())
     
-
-prompt = f"""
-Read this rental agreement: {full_pdf} Return ONLY valid JSON.
-These are the rules:
-No comments
-No trailing commas
-No markdown
-No explanations
-Arrays must contain only values, not objects with no keys
-Every object must be key:value
-All strings must use double quotes
-Do not invent fields
-Do not wrap JSON in ```json fences"""
+prompt = f""" Read {full_pdf} and extract the important information in this document in JSON format:
+Return ONLY valid JSON.
+No text before or after.
+No markdown.
+No comments.
+No explanations.
+No code fences.
+No invented fields.
+All keys must be strings.
+All values must be strings, numbers, booleans, or arrays.
+"""
 
 response = ollama.chat(
     model='phi3:mini',
@@ -36,8 +34,8 @@ text_response = response["message"]["content"]
 
 raw_text = text_response.replace("```json", "").replace("```", "").strip()
 
-
-json_response = json.loads(text_response)
+print(raw_text)
+json_response = json.loads(raw_text)
 
 
 print(json_response)
