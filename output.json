@@ -1,41 +1,32 @@
 {
-    "landlord_name": "Sarah Thompson",
-    "tenant_name": "Mohammed Baher",
-    "property_address": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-    "start_date": "February 1, 2024",
-    "end_date": "January 31, 2025",
-    "monthly_rent": "AED 6,500",
-    "payment_due_day": "on or before the 1st of each month",
-    "payment_method": [
+    "AgreementDate": "Janu01_2024",
+    "LandlordName": "Sarah Thompson",
+    "LandlordAddress": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
+    "TenantName": "Mohammed Baher",
+    "TenantAddress": "14 Creek View Residences, Business Bay, Dubai, UAE",
+    "PropertyLocation": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
+    "LeaseStartDate": "February_2024",
+    "LeaseEndDate": "January_31_2025",
+    "TermLengthMonths": "12",
+    "RentPerMonthAED": "6500",
+    "PaymentDueDay": "1st of each month",
+    "PaymentMethod": [
         "Bank transfer",
-        "post-dated cheques"
+        "Post-dated cheques"
     ],
-    "security_deposit_amount": "AED 6,500",
-    "refundable_within_days": "30 days after the end of lease",
-    "tenant_utilities": [
+    "SecurityDepositAmountAED": "6500",
+    "UtilitiesResponsibleByTenant": [
         "DEWA (electricity & water)",
-        "Internet"
+        "Internet",
+        "Gas (if applicable)"
     ],
-    "landlord_responsibilities": [
-        "Building service charges",
-        "maintenance of major systems (AC, plumbing, electrical)"
-    ],
-    "late_fee_amount": "AED 150 if not paid within 5 days",
-    "property_use_policy": {
-        "residential_only": true,
-        "subletting_permitted": false,
-        "report_damages_promptly": true
-    },
-    "repairs_maintenance": {
-        "major_repairs_handled_by_landlord": true,
-        "minor_repairs_under_AED_200": true
-    },
-    "early_termination": {
-        "notice_period_days": "60 days",
-        "tenant_responsible_for_rent": true
-    },
-    "landlord_entry": {
-        "within_24_hours_notification": true,
-        "reasonable_excuse_exception": false
-    }
+    "BuildingServiceChargesLandlord": true,
+    "MaintenanceOfMajorSystemsLandlord": true,
+    "MinorRepairsHandledByTenantUnderAED_200": false,
+    "LateFeePerDayAED": "150",
+    "PropertyUseOnlyResidentialWithoutSubletting": true,
+    "ReportDamagesPromptlyLandlordToKnow": true,
+    "EarlyTermination60DaysNoticeWritten": true,
+    "TenantRemainsResponsibleForRentDuringNoticePeriod": true,
+    "EntryByLandlord24HoursNoticeExceptEmergency": true
 }

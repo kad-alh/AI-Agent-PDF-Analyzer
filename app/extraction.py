@@ -12,17 +12,19 @@ with pdfplumber.open("sample_agreements/agreement.pdf") as pdf: #Using pdfplumbe
     split_text = full_pdf.split()
     full_pdf = " ".join(full_pdf.split())
     
-prompt = f""" Read {full_pdf} and extract ALL the important information in this document in JSON format, such as for example,
-Tenant Name: John Doe. Read this pdf and order all the important information in a structured way, such as for example, Tenant Name: John Doe. Return ONLY valid JSON.
-No text before or after.
-No markdown.
-No comments.
-No explanations.
-No code fences.
-No invented fields.
-All keys must be strings.
-All values must be strings, numbers, booleans, or arrays, no quotes, no double quotes, no nothing your job is to extract the information 
-and return it in JSON format, nothing else.   
+prompt = f"""
+You MUST follow these rules EXACTLY: 1. Read the following document text: 
+{full_pdf} 2. Extract ONLY the information that actually exists in the document. 
+Do NOT invent, guess, assume, or add fields. 
+3. Return the information in a single JSON object. 
+4. The JSON MUST follow these rules: - Return ONLY valid JSON. - No text before or after the JSON. 
+- No markdown. - No comments. - No explanations. - No code fences. - All keys must be strings. 
+- All values must be strings, numbers, booleans, or arrays. - No trailing commas. 
+- No single quotes. - ONLY double quotes. - No null unless the document explicitly contains a missing value. 
+- Do NOT include fields that are not present in the document. 
+5. If the document does not contain a piece of information, OMIT that field entirely. 
+Your entire output MUST be one valid JSON object and nothing else.
+  
 
 """
 
