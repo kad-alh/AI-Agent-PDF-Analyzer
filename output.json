@@ -1,49 +1,41 @@
 {
-    "agreement_date": "January 1, 2024",
     "landlord_name": "Sarah Thompson",
-    "landlord_address": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
     "tenant_name": "Mohammed Baher",
-    "tenant_address": "14 Creek View Residences, Business Bay, Dubai, UAE",
-    "property_location": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
+    "property_address": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
     "start_date": "February 1, 2024",
-    "end_date": "Janu_31, 2025",
-    "lease_term": "fixed 12-month term",
-    "rent_amount": "AED 6,500",
-    "payment_due_time": "On or before the first of each month",
+    "end_date": "January 31, 2025",
+    "monthly_rent": "AED 6,500",
+    "payment_due_day": "on or before the 1st of each month",
     "payment_method": [
         "Bank transfer",
-        "post\u2011dated cheques"
+        "post-dated cheques"
     ],
     "security_deposit_amount": "AED 6,500",
-    "refundable_within": "30 days after lease end",
-    "utilities_responsibilities": {
-        "tenant": [
-            "DEWA (electricity & water)",
-            "Internet"
-        ],
-        "landlord": [
-            "building service charges",
-            "major systems maintenance"
-        ]
+    "refundable_within_days": "30 days after the end of lease",
+    "tenant_utilities": [
+        "DEWA (electricity & water)",
+        "Internet"
+    ],
+    "landlord_responsibilities": [
+        "Building service charges",
+        "maintenance of major systems (AC, plumbing, electrical)"
+    ],
+    "late_fee_amount": "AED 150 if not paid within 5 days",
+    "property_use_policy": {
+        "residential_only": true,
+        "subletting_permitted": false,
+        "report_damages_promptly": true
     },
-    "late_fee_amount": "AED 150 if rent is not paid within five days of due date",
-    "property_use": {
-        "for_residential_only": true,
-        "no_subletting": true,
-        "keep_clean_and_in_good_condition": true
-    },
-    "repairs_responsibilities": {
-        "report_damages_promptly": true,
-        "handle_major_reports": false,
-        "handle_minor_under_AED_200": true
+    "repairs_maintenance": {
+        "major_repairs_handled_by_landlord": true,
+        "minor_repairs_under_AED_200": true
     },
     "early_termination": {
-        "written_notice_period": "60 days",
-        "rent_responsibility_during_notice": true
+        "notice_period_days": "60 days",
+        "tenant_responsible_for_rent": true
     },
     "landlord_entry": {
-        "with_24_hours_notice": true,
-        "for_inspections_or_repairs": true,
-        "except_emergencies": true
+        "within_24_hours_notification": true,
+        "reasonable_excuse_exception": false
     }
 }
