@@ -1,69 +1,42 @@
 {
-    "Agreement_Type": "Residential Rental Agreement",
-    "Parties": {
-        "Landlord": {
-            "Name": "Sarah Thompson",
-            "Address": "22 Palm Crescent, Dubai Marina, Dubai, UAE"
-        },
-        "Tenant": {
-            "Name": "Mohammed Baher",
-            "Address": "14 Creek View Residences, Business Bay, Dubai, UAE"
-        }
+    "agreement_date": "Januamoan 1, 2024",
+    "landlord": {
+        "name": "Sarah Thompson"
     },
-    "Property_Details": {
-        "Rental_Location": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-        "Lease_Start_Date": "February 1, 2024",
-        "Lease_End_Date": "Januener 31, 2025"
+    "tenant": {
+        "name": "Mohammed Baher"
     },
-    "Rent": {
-        "Monthly_Amount": "AED 6,500",
-        "Payment_Due_Day": "On or before the first of each month",
-        "Payment_Method": [
-            "Bank transfer",
-            "Post-dated cheques"
-        ]
+    "property": {
+        "address": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
+        "lease_start_date": "Februamoan 1, 2024",
+        "lease_end_date": "Januamoan 31, 2025"
     },
-    "Security_Deposit": {
-        "Amount": "AED 6,500",
-        "Held_By": "Landlord"
+    "monthly_rent": {
+        "amount": "AED 6,500",
+        "due_date": "on or before the 1st of each month"
     },
-    "Utilities": {
-        "Tenant_Responsibilities": [
+    "security_deposit": "AED 6,500 held by Landlord as security for damages or unpaid rent",
+    "utilities": {
+        "tenant_responsibility": [
             "DEWA (electricity & water)",
             "Internet"
         ],
-        "Landlord_Responsibilities": [
+        "landlord_responsibility": [
             "Building service charges",
-            "Maintenance of major systems (AC, plumbing, electrical)"
+            "Maintenance of major systems"
         ]
     },
-    "Late_Fees": {
-        "Fee_Amount": "AED 150",
-        "Application_Condition": "If rent is not paid within five days after the due date"
-    },
-    "Property_Use": {
-        "Permitted_Use": [
-            "Residential use only"
+    "late_fee_policy": "AED 150 if rent is not paid within 5 days of the due date",
+    "property_use": "Residential use only with no subletting without written permission; Tenant must keep the property clean and in good condition",
+    "repairs_maintenance": {
+        "landlord_responsibility": [
+            "Damages to be reported promptly"
         ],
-        "Subletting_Policy": "No subletting without written permission",
-        "Cleanliness_Condition": "Tenant must keep the property clean and in good condition"
+        "tenant_responsibility": [
+            "Minor repairs under AED 200"
+        ]
     },
-    "Repairs_Maintenance": {
-        "Damages_Reporting": "Promptly report damages to Landlord",
-        "Major_Repairs": "Handled by Landlord",
-        "Minor_Repairs_Cost_Limit": "Under AED 200"
-    },
-    "Termination": {
-        "Early_Withdrawal_Notice": "60 days written notice required from either party",
-        "Tenant_Rent_Responsibility_During_Period": true
-    },
-    "Entry": {
-        "Landlord_Access": "with a minimum of twenty-four hours' prior notification, except in emergencies"
-    },
-    "Signatures": {
-        "Landlord_Signature": "//",
-        "Landlord_Name": "Sarah Thompson",
-        "Tenant_Signature": "//",
-        "Tenant_Name": "Mohammed Baher"
-    }
+    "early_termination_policy": "Either party may terminate early with 60 days\u2019 written notice; Tenant remains responsible for rent during the notice period",
+    "entry_by_landlord_policy": "Landlord may enter the property with 24 hours' notice for inspections or repairs, except in emergencies",
+    "signatures_required": true
 }

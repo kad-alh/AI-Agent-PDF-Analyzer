@@ -1,9 +1,8 @@
-import pdfplumber # Bringing in the pdfplumber library to have access to pdfs
+import pdfplumber 
 import ollama 
 import json
 
-
-opened_pdf =pdfplumber.open("sample_agreements/agreement.pdf") #Using pdfplumber.open() to open and read the pdf file
+opened_pdf = pdfplumber.open("sample_agreements/agreement.pdf") 
     
 x = opened_pdf.pages[0] 
 y = opened_pdf.pages[1]
@@ -14,47 +13,125 @@ split_text = full_pdf.split()
 full_pdf = " ".join(full_pdf.split())
 
 
-response = ollama.chat(
-    model='phi3:mini',
+state = {
+    "bullets": None,
+    "json_text": None,
+    "valid": False
+}
+
+while not state["valid"]:
+
+    print("Current state:")
+    print("bullets is None:", state["bullets"] is None)
+    print("json_text is None:", state["json_text"] is None)
+
+    if state["bullets"] is None:
+        action = "extract_bullets"
+    elif state["json_text"] is None:
+        action = "format_json"    
+    else:
+        action = "repair_json"
+    print("Action:", action)
+
+    if action == "extract_bullets":
+
+        print("Extracting bullets from PDF...")
+
+        response = ollama.chat(
+            model='phi3:medium',
+            messages=[{'role': 'user', 'content': f"""
+               Extract ONLY explicit facts from the document.
+                - No summaries
+                - No combining facts
+                - No assumptions
+                - No commentary
+                - One fact per bullet
+                - Use exact wording from the document
+
+                DOCUMENT:
+
+                {full_pdf}
+
+                Return ONLY bullet points.
+
+                """}]
+                )
+        bullets = response["message"]["content"]
+        print("\nBullets extracted (preview):")
+        print(bullets[:300], "...\n")
+        state["bullets"] = bullets
+    
+    elif action == "format_json":
+        response =  ollama.chat(
+    model='phi3:medium',
     messages=[{'role': 'user', 'content': f"""
-You MUST follow these rules EXACTLY: 1. Read the following document text: 
-{full_pdf} 2. Extract ONLY the information that actually exists in the document. 
-Do NOT invent, guess, assume, or add fields. 
-3. Return the information in a single JSON object. 
-4. The JSON MUST follow these rules: - Return ONLY valid JSON. - No text before or after the JSON. 
-- No markdown. - No comments. - No explanations. - No code fences. - All keys must be strings. 
-- All values must be strings, numbers, booleans, or arrays. - No trailing commas. 
-- No single quotes. - ONLY double quotes. - No null unless the document explicitly contains a missing value. 
-- Do NOT include fields that are not present in the document. 
-5. If the document does not contain a piece of information, OMIT that field entirely. 
-Your entire output MUST be one valid JSON object and nothing else.
-DO NOT LEAVE OUT ANY INFORMATION THAT IS PRESENT IN THE DOCUMENT AND KEEP IT CONSISTENT WITH THE DOCUMENT.
-  """}]
-)
+            Convert the bullet points below into ONE valid JSON object.
+            BULLET POINTS:
+            {state["bullets"]}
+
+            RULES:
+            - Each bullet point becomes a key-value pair.
+            - If a bullet point has no value, set the value to "".
+            - Use ONLY double quotes.
+            - No trailing commas.
+            - No comments or explanations.
+            - Output ONLY the JSON.
+
+            """ }]
+            )
+        json_text = response["message"]["content"]
+        print("\nFormatted JSON (preview):")
+        print(json_text[:300], "...\n")
+        state["json_text"] = json_text
+        
+        
+    elif action == "repair_json":
 
 
-text_response = response["message"]["content"]
+        print("Repairing JSON...")
+        response = ollama.chat(
+    model='phi3:medium',
+    messages=[{'role': 'user', 'content': f"""You will be given JSON that is invalid. Your job is to FIX it.
 
-raw_text = text_response.replace("```json", "").replace("```", "").strip()
+            RULES (follow EXACTLY):
+            - Output ONLY valid JSON.
+            - No explanations.
+            - No comments.
+            - No markdown.
+            - No backticks.
+            - No text before or after the JSON.
+            - Use ONLY double quotes.
+            - Do NOT invent or remove keys.
+            - Do NOT change values unless required to fix JSON.
+            - Do NOT add ellipses (...).
+            - Do NOT truncate anything.
+            - Do NOT reformat into multiple objects. Keep ONE object.
 
+            Here is the JSON to fix:
+            {state["json_text"]}
 
+            Return ONLY the corrected JSON.
 
-validation_response = ollama.chat(
-    model='phi3:mini',
-    messages=[{'role': 'user', 'content': f"""Go through the following information and ONLY check if it is valid JSON format, 
-               DO NOT comment, add, remove, or do anything with this information, your job is to validate the JSON format, then if the format is not correct,
-               you are allowed to FIX ONLY, and not to add anything from yourself, so that it can be valid to be used in json.loads().
-                This is the text:{raw_text}""" }]
-)
+            """ }]
 
+        )
+        repaired_json = response["message"]["content"]
+        print("\nRepaired JSON (preview):")
+        print(repaired_json[:300], "...\n")
+        state["json_text"] = repaired_json
+        
+    if state["json_text"] is not None:
+        print("Validating JSON...")
+        try:
+            json.loads(state["json_text"])
+            state["valid"] = True
+        except:
+            state["valid"] = False
+    
 
-validated_response = validation_response["message"]["content"]
-
-
-text_to_json = validated_response.replace("```json", "").replace("```", "").strip()
-json_response = json.loads(text_to_json)
-
-print(json_response)
+final_json = json.loads(state["json_text"])
 
 with open('output.json', 'w') as f:
-    json.dump(json_response, f, indent=4)
+    json.dump(final_json, f, indent=4)
+
+print(f"Completed JSON: {final_json}")
