@@ -1,42 +1,51 @@
 {
-    "agreement_date": "Januamoan 1, 2024",
-    "landlord": {
-        "name": "Sarah Thompson"
+    "AgreementDate": "January 1, 2024",
+    "Landlord": {
+        "Name": "Sarah Thompson"
     },
-    "tenant": {
-        "name": "Mohammed Baher"
+    "Tenant": {
+        "Name": "Mohammed Baher"
     },
-    "property": {
-        "address": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-        "lease_start_date": "Februamoan 1, 2024",
-        "lease_end_date": "Januamoan 31, 2025"
+    "PropertyAddress": "Unit  cu, Marina Heights Tower, Dubai Marina, Dubai, UAE",
+    "LeaseTermStartDate": "February 1, 2024",
+    "LeaseTermEndDate": "January 31, 2025",
+    "MonthlyRent": {
+        "Amount": "AED 6,500"
     },
-    "monthly_rent": {
-        "amount": "AED 6,500",
-        "due_date": "on or before the 1st of each month"
+    "SecurityDeposit": {
+        "Amount": "AED 6,500"
     },
-    "security_deposit": "AED 6,500 held by Landlord as security for damages or unpaid rent",
-    "utilities": {
-        "tenant_responsibility": [
-            "DEWA (electricity & water)",
-            "Internet"
-        ],
-        "landlord_responsibility": [
-            "Building service charges",
-            "Maintenance of major systems"
+    "TenantResponsibilities": [
+        "DEWA (electricity & water)",
+        "Internet",
+        "Gas (if applicable)"
+    ],
+    "LandlordResponsibilities": [
+        "Building service charges",
+        "Maintenance of major systems (AC, plumbing, electrical)"
+    ],
+    "LateFee": {
+        "Amount": "AED 150"
+    },
+    "PropertyUseRestrictions": [
+        "Residential only",
+        "Subletting without written permission prohibited"
+    ],
+    "TenantMaintenanceObligations": "",
+    "RepairsAndMaintenance": {
+        "MajorByLandlord": true,
+        "MinorByTenantUnderAED200": true
+    },
+    "EarlyTerminationRules": [
+        "60 days' written notice",
+        "tenant remains responsible for rent during the notice period"
+    ],
+    "LandlordEntryRules": {
+        "NoticeRequired": "24 hours",
+        "Exceptions": [
+            "inspections or repairs",
+            "emergencies"
         ]
     },
-    "late_fee_policy": "AED 150 if rent is not paid within 5 days of the due date",
-    "property_use": "Residential use only with no subletting without written permission; Tenant must keep the property clean and in good condition",
-    "repairs_maintenance": {
-        "landlord_responsibility": [
-            "Damages to be reported promptly"
-        ],
-        "tenant_responsibility": [
-            "Minor repairs under AED 200"
-        ]
-    },
-    "early_termination_policy": "Either party may terminate early with 60 days\u2019 written notice; Tenant remains responsible for rent during the notice period",
-    "entry_by_landlord_policy": "Landlord may enter the property with 24 hours' notice for inspections or repairs, except in emergencies",
-    "signatures_required": true
+    "SignaturesRequirement": ""
 }
