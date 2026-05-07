@@ -21,9 +21,6 @@ state = {
 
 while not state["valid"]:
 
-    print("Current state:")
-    print("bullets is None:", state["bullets"] is None)
-    print("json_text is None:", state["json_text"] is None)
 
     if state["bullets"] is None:
         action = "extract_bullets"
@@ -65,17 +62,18 @@ while not state["valid"]:
         response =  ollama.chat(
     model='phi3:medium',
     messages=[{'role': 'user', 'content': f"""
-            Convert the bullet points below into ONE valid JSON object.
-            BULLET POINTS:
-            {state["bullets"]}
+          Convert the following bullet points into a single JSON object.
 
             RULES:
-            - Each bullet point becomes a key-value pair.
-            - If a bullet point has no value, set the value to "".
-            - Use ONLY double quotes.
-            - No trailing commas.
-            - No comments or explanations.
-            - Output ONLY the JSON.
+            - Output ONLY valid JSON.
+            - Use double quotes.
+            - Do not add or remove information.
+            - Keep values exactly as written.
+            - If something is missing, leave it null.
+
+            BULLETS:
+            {state["bullets"]}
+            Return ONLY the JSON object.
 
             """ }]
             )
@@ -93,26 +91,18 @@ while not state["valid"]:
     model='phi3:medium',
     messages=[{'role': 'user', 'content': f"""You will be given JSON that is invalid. Your job is to FIX it.
 
-            RULES (follow EXACTLY):
+          Fix the JSON so it becomes valid.
+
+            RULES:
             - Output ONLY valid JSON.
+            - Use double quotes.
+            - Do not add or remove keys.
+            - Do not change values unless required to fix JSON.
             - No explanations.
-            - No comments.
-            - No markdown.
-            - No backticks.
-            - No text before or after the JSON.
-            - Use ONLY double quotes.
-            - Do NOT invent or remove keys.
-            - Do NOT change values unless required to fix JSON.
-            - Do NOT add ellipses (...).
-            - Do NOT truncate anything.
-            - Do NOT reformat into multiple objects. Keep ONE object.
 
-            Here is the JSON to fix:
+            BROKEN JSON:
             {state["json_text"]}
-
-            Return ONLY the corrected JSON.
-
-            """ }]
+                        """ }]
 
         )
         repaired_json = response["message"]["content"]
