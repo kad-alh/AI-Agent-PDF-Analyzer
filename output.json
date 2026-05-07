@@ -1,51 +1,92 @@
 {
-    "AgreementDate": "January 1, 2024",
-    "Landlord": {
-        "Name": "Sarah Thompson"
-    },
-    "Tenant": {
-        "Name": "Mohammed Baher"
-    },
-    "PropertyAddress": "Unit  cu, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-    "LeaseTermStartDate": "February 1, 2024",
-    "LeaseTermEndDate": "January 31, 2025",
-    "MonthlyRent": {
-        "Amount": "AED 6,500"
-    },
-    "SecurityDeposit": {
-        "Amount": "AED 6,500"
-    },
-    "TenantResponsibilities": [
-        "DEWA (electricity & water)",
-        "Internet",
-        "Gas (if applicable)"
-    ],
-    "LandlordResponsibilities": [
-        "Building service charges",
-        "Maintenance of major systems (AC, plumbing, electrical)"
-    ],
-    "LateFee": {
-        "Amount": "AED 150"
-    },
-    "PropertyUseRestrictions": [
-        "Residential only",
-        "Subletting without written permission prohibited"
-    ],
-    "TenantMaintenanceObligations": "",
-    "RepairsAndMaintenance": {
-        "MajorByLandlord": true,
-        "MinorByTenantUnderAED200": true
-    },
-    "EarlyTerminationRules": [
-        "60 days' written notice",
-        "tenant remains responsible for rent during the notice period"
-    ],
-    "LandlordEntryRules": {
-        "NoticeRequired": "24 hours",
-        "Exceptions": [
-            "inspections or repairs",
-            "emergencies"
-        ]
-    },
-    "SignaturesRequirement": ""
+    "Residential Rental Agreement": {
+        "Effective Date": "January 1, 2024",
+        "Landlord": {
+            "Name": "Sarah Thompson",
+            "Address": "\"22 Palm Crescent\", \"Dubai Marina\", \"UAE\""
+        },
+        "Tenant": {
+            "Name": "Mohammed Baher",
+            "Address": "\"1e Creek View Residences\", \"Business Bay\", \"Dubai, UAE\""
+        },
+        "PropertyDetails": {
+            "UnitNumber": "804",
+            "Building": "Marina Heights Tower",
+            "Location": "\"Dubai Marina\", \"Dubai, UAE\""
+        },
+        "LeaseTerms": {
+            "StartDate": "February 1, 2024",
+            "EndDate": "January 31, 2025",
+            "Duration": "Fixed 12-month term"
+        },
+        "MonthlyRent": {
+            "Amount": "AED 6,500",
+            "DueDate": "On or before the 1st of each month"
+        },
+        "PaymentMethod": [
+            {
+                "Method": "Bank transfer"
+            },
+            {
+                "Method": "Post-dated cheques"
+            }
+        ],
+        "SecurityDeposit": {
+            "Amount": "AED 2,000",
+            "HeldByLandlordFor": [
+                "Damages",
+                "Unpaid rent"
+            ],
+            "RefundableWithinDaysAfterLeaseEnd": 30,
+            "DeductibleFor": [
+                "Damages"
+            ]
+        },
+        "UtilitiesResponsibility": {
+            "Tenant": [
+                {
+                    "Utility": "DEWA (electricity & water)"
+                },
+                {
+                    "Utility": "Internet"
+                },
+                {
+                    "Utility": "Gas"
+                }
+            ],
+            "Landlord": [
+                {
+                    "Charge": "Building service charges"
+                },
+                {
+                    "Maintenance": "Major systems maintenance"
+                }
+            ]
+        },
+        "LateFee": {
+            "Amount": "AED 150",
+            "ApplicableAfterDaysFromDueDate": 5
+        },
+        "UseOfProperty": "For residential use only; No subletting without written permission. Tenant must keep property clean and in good condition.",
+        "RepairsAndMaintenance": {
+            "Tenant": [
+                "Report damages promptly"
+            ],
+            "Landlord": [
+                "Handles major repairs"
+            ],
+            "CostThresholdForMinorRepairsByTenant": 200,
+            "Currency": "AED"
+        },
+        "EarlyTermination": {
+            "NoticePeriodDays": 60,
+            "RentResponsibilityDuringNoticePeriod": true
+        },
+        "LandlordEntry": {
+            "24HoursNoticeRequiredForInspectionsOrRepairs": true,
+            "Exceptions": [
+                "Emergencies"
+            ]
+        }
+    }
 }
