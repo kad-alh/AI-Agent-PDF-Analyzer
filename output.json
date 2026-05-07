@@ -1,48 +1,69 @@
 {
-    "Agreement_startDate": "Janu0ne1,2024",
-    "Landlord_Name": "Sarah Thompson",
-    "Landlord_Address": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
-    "Tenant_Name": "Mohammed Baher",
-    "Tenant_Address": "14 Creek View Residences, Business Bay, Dubai, UAE",
-    "Property_unitNumber": "804",
-    "Property_address": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-    "Term_StartDate": "February1,2024",
-    "Term_EndDate": "January31,2025",
-    "RentAmountAED": "6500",
-    "PaymentDueDayOfMonth": "1st",
-    "PaymentMethodOptions": [
-        "Bank transfer",
-        "Post\u2011dated cheques"
-    ],
-    "SecurityDepositAmountAED": "6500",
-    "Utilities_TenantResponsibleFor": [
-        "DEWA (electricity & water)",
-        "Internet",
-        "Gas(if applicable)"
-    ],
-    "Utilities_LandlordResponsibleFor": [
-        "Building service charges",
-        "Maintenance of major systems (AC, plumbing, electrical)"
-    ],
-    "LateFeeAmountAED": "150",
-    "UseOfPropertyRules": {
-        "OnlyResidentialUseAllowed": true,
-        "SublettingPermitted": false,
-        "ConditionMaintenanceRequirement": true
-    },
-    "RepairsAndMaintenance_TenantResponsibilityForMinorDeductionsUnderAED200": true,
-    "EarlyTerminationNoticePeriodDays": "60",
-    "LandlordEntryConditions": {
-        "WithinNotifyTimeRangeHours": "24"
-    },
-    "Signatures_Required": [
-        {
+    "Agreement_Type": "Residential Rental Agreement",
+    "Parties": {
+        "Landlord": {
             "Name": "Sarah Thompson",
-            "Date": "January1,2024"
+            "Address": "22 Palm Crescent, Dubai Marina, Dubai, UAE"
         },
-        {
+        "Tenant": {
             "Name": "Mohammed Baher",
-            "Date": "January1,2024"
+            "Address": "14 Creek View Residences, Business Bay, Dubai, UAE"
         }
-    ]
+    },
+    "Property_Details": {
+        "Rental_Location": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
+        "Lease_Start_Date": "February 1, 2024",
+        "Lease_End_Date": "Januener 31, 2025"
+    },
+    "Rent": {
+        "Monthly_Amount": "AED 6,500",
+        "Payment_Due_Day": "On or before the first of each month",
+        "Payment_Method": [
+            "Bank transfer",
+            "Post-dated cheques"
+        ]
+    },
+    "Security_Deposit": {
+        "Amount": "AED 6,500",
+        "Held_By": "Landlord"
+    },
+    "Utilities": {
+        "Tenant_Responsibilities": [
+            "DEWA (electricity & water)",
+            "Internet"
+        ],
+        "Landlord_Responsibilities": [
+            "Building service charges",
+            "Maintenance of major systems (AC, plumbing, electrical)"
+        ]
+    },
+    "Late_Fees": {
+        "Fee_Amount": "AED 150",
+        "Application_Condition": "If rent is not paid within five days after the due date"
+    },
+    "Property_Use": {
+        "Permitted_Use": [
+            "Residential use only"
+        ],
+        "Subletting_Policy": "No subletting without written permission",
+        "Cleanliness_Condition": "Tenant must keep the property clean and in good condition"
+    },
+    "Repairs_Maintenance": {
+        "Damages_Reporting": "Promptly report damages to Landlord",
+        "Major_Repairs": "Handled by Landlord",
+        "Minor_Repairs_Cost_Limit": "Under AED 200"
+    },
+    "Termination": {
+        "Early_Withdrawal_Notice": "60 days written notice required from either party",
+        "Tenant_Rent_Responsibility_During_Period": true
+    },
+    "Entry": {
+        "Landlord_Access": "with a minimum of twenty-four hours' prior notification, except in emergencies"
+    },
+    "Signatures": {
+        "Landlord_Signature": "//",
+        "Landlord_Name": "Sarah Thompson",
+        "Tenant_Signature": "//",
+        "Tenant_Name": "Mohammed Baher"
+    }
 }
