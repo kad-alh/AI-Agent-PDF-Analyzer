@@ -1,42 +1,48 @@
 {
-    "AgreementType": "Residential Rental Agreement",
-    "DateMade": "Janu01,2024",
-    "LandlordName": "Sarah Thompson",
-    "LandlordAddress": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
-    "TenantName": "Mohammed Baher",
-    "TenantAddress": "14 Creek View Residences, Business Bay, Dubai, UAE",
-    "PropertyLocation": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-    "LeaseStartDate": "Feburary 1,2024",
-    "LeaseEndDate": "Januaray 31,2025",
-    "TermOfLease": "Fixed - 12 months",
-    "RentAmount": "AED 6,500",
-    "PaymentDueByDay": 1,
+    "Agreement_startDate": "Janu0ne1,2024",
+    "Landlord_Name": "Sarah Thompson",
+    "Landlord_Address": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
+    "Tenant_Name": "Mohammed Baher",
+    "Tenant_Address": "14 Creek View Residences, Business Bay, Dubai, UAE",
+    "Property_unitNumber": "804",
+    "Property_address": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
+    "Term_StartDate": "February1,2024",
+    "Term_EndDate": "January31,2025",
+    "RentAmountAED": "6500",
+    "PaymentDueDayOfMonth": "1st",
     "PaymentMethodOptions": [
         "Bank transfer",
-        "Post-dated cheques"
+        "Post\u2011dated cheques"
     ],
-    "SecurityDepositAmount": "AED 6,500",
-    "RefundableWithinDaysAfterLeaseEnds": 30,
-    "TenantUtilitiesResponsibilities": [
+    "SecurityDepositAmountAED": "6500",
+    "Utilities_TenantResponsibleFor": [
         "DEWA (electricity & water)",
         "Internet",
-        "Gas (if applicable)"
+        "Gas(if applicable)"
     ],
-    "LandlordUtilitiesResponsibilities": [
+    "Utilities_LandlordResponsibleFor": [
         "Building service charges",
         "Maintenance of major systems (AC, plumbing, electrical)"
     ],
-    "LateFeePerDayAfterDueDate": "AED 150",
-    "PropertyUseRestriction": "No subletting without written permission. Residential use only.",
-    "TenantRepairResponsibilitiesUnder200AED": true,
-    "MajorRepairsLandlordHandle": true,
-    "EarlyTerminationNoticePeriodDays": 60,
-    "EntryByLandlordWithoutNoticeNeededForReasons": [
-        "Inspections",
-        "Repairs"
-    ],
-    "DocumentSignatures": {
-        "Sarah Thompson": "",
-        "Mohammed Baher": ""
-    }
+    "LateFeeAmountAED": "150",
+    "UseOfPropertyRules": {
+        "OnlyResidentialUseAllowed": true,
+        "SublettingPermitted": false,
+        "ConditionMaintenanceRequirement": true
+    },
+    "RepairsAndMaintenance_TenantResponsibilityForMinorDeductionsUnderAED200": true,
+    "EarlyTerminationNoticePeriodDays": "60",
+    "LandlordEntryConditions": {
+        "WithinNotifyTimeRangeHours": "24"
+    },
+    "Signatures_Required": [
+        {
+            "Name": "Sarah Thompson",
+            "Date": "January1,2024"
+        },
+        {
+            "Name": "Mohammed Baher",
+            "Date": "January1,2024"
+        }
+    ]
 }
