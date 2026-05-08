@@ -2,6 +2,27 @@ import pdfplumber
 import ollama 
 import json
 
+def chunk_text(text, max_length=3001):
+    chunks = []
+    collected_words = []
+    split_words = text.split()
+
+    for word in split_words:
+        collected_words.append(word)
+        current_list = " ".join(collected_words)   
+
+        if len(current_list) >= max_length:
+            chunks.append(current_list)            
+            collected_words = []                   
+
+    
+    if collected_words:
+        chunks.append(" ".join(collected_words))
+
+    return chunks
+
+
+
 opened_pdf = pdfplumber.open("sample_agreements/agreement.pdf") 
     
 x = opened_pdf.pages[0] 
@@ -11,6 +32,33 @@ pdf2 = y.extract_text()
 full_pdf = pdf1 + pdf2
 split_text = full_pdf.split()
 full_pdf = " ".join(full_pdf.split())
+
+chunked_bullets = ""
+chunked_pdf = chunk_text(full_pdf, max_length = 3000)
+for chunk in chunked_pdf: 
+    respone = ollama.chat(
+    model='mistral:latest',
+    messages=[{'role': 'user', 'content': f"""
+        Extract ONLY explicit facts from the following text.
+        No summaries
+        No combining facts
+        No assumptions
+        No rewriting
+        One fact per bullet
+        Use exact wording from the text
+
+            TEXT:
+            {chunk}
+
+    Return ONLY bullet points
+
+        """}]
+        )
+    
+    bullet_list = respone["message"]["content"]
+    chunked_bullets += bullet_list.strip() + "\n"
+    
+print("Extracted")
 
 
 state = {
@@ -35,7 +83,7 @@ while not state["valid"]:
         print("Extracting bullets from PDF...")
 
         response = ollama.chat(
-            model='phi3:medium',
+            model='mistral:latest',
             messages=[{'role': 'user', 'content': f"""
                Extract ONLY explicit facts from the document.
                 - No summaries
@@ -47,7 +95,7 @@ while not state["valid"]:
 
                 DOCUMENT:
 
-                {full_pdf}
+                {chunked_bullets}
 
                 Return ONLY bullet points.
 
@@ -60,7 +108,7 @@ while not state["valid"]:
     
     elif action == "format_json":
         response =  ollama.chat(
-    model='phi3:medium',
+    model='mistral:latest',
     messages=[{'role': 'user', 'content': f"""
           Convert the following bullet points into a single JSON object.
 
@@ -88,7 +136,7 @@ while not state["valid"]:
 
         print("Repairing JSON...")
         response = ollama.chat(
-    model='phi3:medium',
+    model='mistral:latest',
     messages=[{'role': 'user', 'content': f"""You will be given JSON that is invalid. Your job is to FIX it.
 
           Fix the JSON so it becomes valid.
