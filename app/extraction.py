@@ -28,7 +28,7 @@ while not state["valid"]:
         action = "format_json"    
     else:
         action = "repair_json"
-    print("Action:", action)
+    
 
     if action == "extract_bullets":
 
