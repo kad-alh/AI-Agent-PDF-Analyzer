@@ -1,4 +1,5 @@
 pdfplumber
 json5
 ollama
-phi3:mini model
+mistral:latest 
+nomic-embed-text:latest

@@ -1,27 +1,53 @@
 {
-    "Property": "Unit 804, Marina Heights Tower, Dubai Marina, Dubai, UAE",
-    "Start Date of Lease": "February 1, 2024",
-    "End Date of Lease": "January 31, 2025",
-    "Rent": "AED 6,500 per month",
-    "Payment Due Date": "On or before the 1st of each month",
-    "Acceptable Payment Methods": [
-        "Bank transfer",
+    "agreement_date": "January 1, 2024",
+    "parties": {
+        "landlord": "Sarah Thompson",
+        "tenant": "Mohammed Baher"
+    },
+    "landlord_address": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
+    "tenant_address": "14 Creek View Residences, Business Bay, Dubai, UAE",
+    "property": {
+        "name": "Unit 804, Marina Heights Tower",
+        "location": "Dubai Marina, Dubai, UAE"
+    },
+    "lease_term": {
+        "start_date": "February 1, 2024",
+        "end_date": "January 31, 2025",
+        "type": "12-month fixed term, renewable with mutual agreement"
+    },
+    "monthly_rent": "AED 6,500",
+    "payment_due_date": "1st of each month",
+    "acceptable_payment_methods": [
+        "bank transfer",
         "post-dated cheques"
     ],
-    "Security Deposit": "AED 6,500",
-    "Tenant's Responsibility for Utilities": [
-        "DEWA (electricity & water)",
-        "Internet",
-        "(if applicable) Gas"
-    ],
-    "Landlord's Responsibility for Utilities": "Building service charges, maintenance of major systems (AC, plumbing, electrical)",
-    "Late Fees": "AED 150 if rent is not paid within 5 days of the due date",
-    "Property Use": "For residential use only. No subletting without written permission. Tenant must keep the property clean and in good condition.",
-    "Repairs & Maintenance": "Tenant must report damages promptly. Landlord handles major repairs. Tenant handles minor repairs under AED 200.",
-    "Early Termination": "Either party may terminate early with 60 days\u2019 written notice. Tenant remains responsible for rent during the notice period.",
-    "Entry by Landlord": "Landlord may enter the property with 24 hours\u2019 notice for inspections or repairs, except in emergencies.",
-    "Signatures": {
-        "Landlord": "Sarah Thompson",
-        "Tenant": "Mohammed Baher"
+    "security_deposit": {
+        "amount": "AED 6,500",
+        "responsible_party": "Landlord"
+    },
+    "utility_bills": {
+        "DEWA": "Tenant"
+    },
+    "maintenance": {
+        "electrical": "Landlord",
+        "plumbing": "Landlord",
+        "AC": "Landlord",
+        "minor_repairs_under_200": "Tenant"
+    },
+    "late_fee": {
+        "amount": "AED 150",
+        "days_grace": "5 days"
+    },
+    "property_use": "residential only; no subletting without written permission",
+    "condition_clause": "Tenant to keep property clean and in good condition",
+    "term_termination": {
+        "by_either_party": true,
+        "notice_period": "60 days\u2019 written notice"
+    },
+    "rent_during_notice_period": true,
+    "entry_rights": {
+        "landlord": true,
+        "notice_required": "24 hours",
+        "emergencies": "exceptions"
     }
 }

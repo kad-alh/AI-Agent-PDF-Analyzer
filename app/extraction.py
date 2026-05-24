@@ -1,8 +1,12 @@
 import pdfplumber 
 import ollama 
 import json
+import chromadb
 
-def chunk_text(text, max_length=3001):
+client = chromadb.Client()
+collection = client.get_or_create_collection(name="pdf_chunks")
+
+def chunk_text(text, max_length=1000):
     chunks = []
     collected_words = []
     split_words = text.split()
@@ -34,7 +38,7 @@ split_text = full_pdf.split()
 full_pdf = " ".join(full_pdf.split())
 
 chunked_bullets = ""
-chunked_pdf = chunk_text(full_pdf, max_length = 3000)
+chunked_pdf = chunk_text(full_pdf, max_length = 1000)
 for chunk in chunked_pdf: 
     respone = ollama.chat(
     model='mistral:latest',
@@ -173,3 +177,20 @@ with open('output.json', 'w') as f:
     json.dump(final_json, f, indent=4)
 
 print(f"Completed JSON: {final_json}")
+
+for i, chunk in enumerate(chunked_pdf):
+    
+    response = ollama.embeddings(
+    model='nomic-embed-text:latest',
+    prompt = chunk
+
+    )
+    embedding = response["embedding"]
+    collection.add(
+        ids=[f"chunk_{i}"],
+        embeddings=[embedding], 
+        documents=[chunk]
+
+    )
+
+print("All embeddings are now stored in ChromaDB")
