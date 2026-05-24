@@ -1,53 +1,83 @@
 {
-    "agreement_date": "January 1, 2024",
-    "parties": {
-        "landlord": "Sarah Thompson",
-        "tenant": "Mohammed Baher"
-    },
-    "landlord_address": "22 Palm Crescent, Dubai Marina, Dubai, UAE",
-    "tenant_address": "14 Creek View Residences, Business Bay, Dubai, UAE",
-    "property": {
-        "name": "Unit 804, Marina Heights Tower",
-        "location": "Dubai Marina, Dubai, UAE"
+    "agreement": "Residential Rental Agreement",
+    "date": "January 1, 2024",
+    "parties": [
+        {
+            "name": "Sarah Thompson",
+            "role": "Landlord"
+        },
+        {
+            "name": "Mohammed Baher",
+            "role": "Tenant"
+        }
+    ],
+    "property_location": {
+        "unit": "804",
+        "building": "Marina Heights Tower",
+        "street": "Dubai Marina",
+        "city": "Dubai",
+        "country": "UAE"
     },
     "lease_term": {
         "start_date": "February 1, 2024",
         "end_date": "January 31, 2025",
-        "type": "12-month fixed term, renewable with mutual agreement"
+        "duration": "12 months",
+        "renewal_possibility": true,
+        "notice_period_for_renewal": null
     },
-    "monthly_rent": "AED 6,500",
-    "payment_due_date": "1st of each month",
-    "acceptable_payment_methods": [
-        "bank transfer",
-        "post-dated cheques"
-    ],
+    "rent": {
+        "amount": "AED 6,500",
+        "due_date": "1st of each month",
+        "payment_methods": [
+            "bank transfer",
+            "post-dated cheques"
+        ],
+        "late_fee": null
+    },
     "security_deposit": {
         "amount": "AED 6,500",
-        "responsible_party": "Landlord"
+        "purpose": "Security for damages or unpaid rent",
+        "refund_within": "30 days after the end of the lease",
+        "deductions": "for damages"
     },
-    "utility_bills": {
-        "DEWA": "Tenant"
+    "utilities": {
+        "electricity_water": "Tenant is responsible"
     },
     "maintenance": {
-        "electrical": "Landlord",
-        "plumbing": "Landlord",
-        "AC": "Landlord",
-        "minor_repairs_under_200": "Tenant"
+        "building_service_charges": "Landlord is responsible",
+        "major_systems": "Landlord is responsible (AC, plumbing, electrical)"
     },
     "late_fee": {
         "amount": "AED 150",
         "days_grace": "5 days"
     },
-    "property_use": "residential only; no subletting without written permission",
-    "condition_clause": "Tenant to keep property clean and in good condition",
-    "term_termination": {
-        "by_either_party": true,
-        "notice_period": "60 days\u2019 written notice"
+    "property_use": {
+        "residential_only": true,
+        "subletting": "No subletting without written permission",
+        "cleanliness": "Tenant must keep the property clean and in good condition"
     },
-    "rent_during_notice_period": true,
-    "entry_rights": {
-        "landlord": true,
-        "notice_required": "24 hours",
-        "emergencies": "exceptions"
-    }
+    "repairs": {
+        "minor_repairs_under_aed_200": "Tenant handles",
+        "major_repairs": "Landlord handles"
+    },
+    "termination": {
+        "either_party_notice_period": "60 days",
+        "rent_responsibility_during_notice_period": true
+    },
+    "entry": {
+        "property_access_for_inspections_or_repairs": "Landlord may enter with 24 hours\u2019 notice",
+        "emergencies": "except in emergencies"
+    },
+    "signatures": [
+        {
+            "name": "Sarah Thompson",
+            "signature": null,
+            "date": null
+        },
+        {
+            "name": "Mohammed Baher",
+            "signature": null,
+            "date": null
+        }
+    ]
 }

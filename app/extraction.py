@@ -25,6 +25,53 @@ def chunk_text(text, max_length=1000):
 
     return chunks
 
+def embed_query(query):
+    response = ollama.embeddings(
+        model='nomic-embed-text:latest',
+        prompt=query
+    )
+    return response["embedding"]
+
+def retrieve_chunks(embedded_query, n=3):
+    results = collection.query(
+        query_embeddings=[embedded_query],
+        n_results=n
+    )
+
+    docs = results.get("documents", [])
+
+    if not docs:
+        return []
+    
+    if len(docs) == 1 and docs[0] == []:
+        return []
+
+    if isinstance(docs[0], list):
+        docs = docs[0]
+
+    return [str(doc) for doc in docs if doc is not None]
+
+def answer_query(query):
+    question_embed = embed_query(query)
+    chunks = retrieve_chunks(question_embed)
+    context = "\n\n".join(str(chunk) for chunk in chunks)
+    
+    response = ollama.chat(
+        model='mistral:latest',
+        messages=[{'role': 'user', 'content': f"""
+            Use ONLY the following chunks to answer the question. 
+            If you don't know the answer, say you don't know. Do not make up an answer.
+
+            Context:
+            {context}
+
+            Question:
+            {query}
+
+            Answer:
+        """}]
+    )
+    return response["message"]["content"]
 
 
 opened_pdf = pdfplumber.open("sample_agreements/agreement.pdf") 
@@ -194,3 +241,11 @@ for i, chunk in enumerate(chunked_pdf):
     )
 
 print("All embeddings are now stored in ChromaDB")
+
+while True:
+    question = input("What would you like to know about this document? (type 'exit' to quit)")
+    if question.lower() == "exit":
+        print("See you later")
+        break
+    answer = answer_query(question)
+    print(f"Answer: {answer}")
